@@ -62,6 +62,10 @@ __all__ = [
 try:
     # import other versions
     from . import client_v1 as _client_v1  # noqa: F401
-    from . import client_vu7 as _client_vu7  # noqa: F401
 except Exception as ex:
-    logging.error(f"Not all dependencies installed: {ex}")
+    logging.debug(f"v1 client not available: {ex}")
+
+try:
+    from . import client_vu7 as _client_vu7  # noqa: F401
+except ImportError:
+    pass  # numpy/pandas are optional (vu7 extra)
