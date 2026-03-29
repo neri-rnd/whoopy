@@ -1,10 +1,10 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=67.0"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "whoopy"
-dynamic = ["version"]
+version = "0.3.0"
 description = "Unofficial Client for the Whoop API"
 readme = "readme.md"
 requires-python = ">=3.10"
@@ -76,20 +76,8 @@ Issues = "https://github.com/felixnext/whoopy/issues"
 Changelog = "https://github.com/felixnext/whoopy/releases"
 
 
-[tool.hatch.version]
-path = "whoopy/__init__.py"
-
-[tool.hatch.build.targets.wheel]
-packages = ["whoopy"]
-
-[tool.hatch.build.targets.sdist]
-include = [
-    "/whoopy",
-    "/tests",
-    "/README.md",
-    "/LICENSE",
-    "/pyproject.toml",
-]
+[tool.setuptools.packages.find]
+include = ["whoopy*"]
 
 [tool.ruff]
 line-length = 120
